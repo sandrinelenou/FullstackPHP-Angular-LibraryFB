@@ -1,0 +1,43 @@
+
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Title Origin</th>
+      <th scope="col">Publish Date</th>
+      <th scope="col-6" colspan="8" class="text-center">Actions</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let book of books; let i = index;">
+      <th scope="row">{{ book.id}}</th>
+      <td>{{ book.title}}</td>
+      <td>{{ book.title_orig}}</td>
+      <td>{{ book.date_1st_pub}}</td>
+      <td><button type="button" class="btn btn-secondary">Edit</button></td>
+      <td><button type="button" class="btn btn-info">Read</button></td>
+      <td><button type="button" class="btn btn-danger">Delete</button></td>
+    </tr>
+
+
+  </tbody>
+</table>
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+  window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        document.getElementById('navbar_top').classList.add('fixed-top');
+        // add padding top to show content behind navbar
+        navbar_height = document.querySelector('.navbar').offsetHeight;
+        document.body.style.paddingTop = navbar_height + 'px';
+      } else {
+        document.getElementById('navbar_top').classList.remove('fixed-top');
+         // remove padding top from body
+        document.body.style.paddingTop = '0';
+      }
+  });
+});
+</script>
