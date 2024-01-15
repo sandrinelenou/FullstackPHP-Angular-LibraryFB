@@ -8,9 +8,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ContainerComponent } from './components/container/container.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BookService } from './services/book.service';
-import { BooksComponent } from './components/books/books.component';
+import { BookService } from './services/books/book.service';
+
 import { HttpClientModule } from '@angular/common/http';
+import { BooksComponent } from './components/books/books-list/books.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     BooksComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,

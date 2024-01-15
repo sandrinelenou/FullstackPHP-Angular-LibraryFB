@@ -12,7 +12,6 @@ $dbname = "library_fb_db";
 $username = "root";
 $password = "";
 
-
 try{
 
   $conn = new PDO("mysql:host ={$host}; dbname={$dbname}",$username,$password);
@@ -23,22 +22,4 @@ try{
 }
 //$conn = null;
 
-/*
- class DB {
-  private $host = "localhost";
-  private $dbname = "library_fb_db";
-  private $username = "root";
-  private $password = "";
-  public $conn;
-  public function getConnection(){
-    $this->conn = null;
-    try{
-      $this->conn = new PDO("mysql:host =".$this->host.";dbname =".$this->dbname);
-    }
-  }
-
-}
-
-*/
-
-?>
+/*?>*/

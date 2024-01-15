@@ -22,16 +22,70 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 // Operazione CREATE
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Codice per inserire dati nel database
+  $insertQuery = "INSERT INTO Books
+  SET p_title=:title, p_title_orig=:title_orig, p_date_1st_pub=:date_1st_pub ";
+//prepare query for execute
+$stmt = $conn->prepare($insertQuery);
+//post values
+$title= $_POST['title'];
+$title_orig= $_POST['title_orig'];
+$date_1st_pub= $_POST['date_1st_pub'];
+//bind parameters
+$stmt->bindParam(':title', $title);
+$stmt->bindParam(':title_orig', $title_orig);
+$stmt->bindParam(':date_1st_pub', $date_1st_pub);
+//execute the query
+  if($stmt->execute()){
+  echo json_encode(array('result'=>'success'));
+  }else{
+  echo json_encode(array('result'=>'fail'));
+  }
 }
 
 // Operazione UPDATE
 if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
   // Codice per aggiornare dati nel database
+  $updateQuery = "UPDATE Books
+  SET p_title=:title, p_title_orig=:title_orig, p_date_1st_pub=:date_1st_pub
+  WHERE p_id=: id";
+//prepare query for execution
+$stmt = $conn->prepare($updateQuery);
+//posted values
+$id = $_POST['id'];
+$title = $_POST['title'];
+$title_orig = $_POST['title_orig'];
+$date_1st_pub = $_POST['date_1st_pub'];
+//bind the parameters
+$stmt->bindParam(':id',$id);
+$stmt->bindParam(':title',$id);
+$stmt->bindParam(':title_orig',$id);
+$stmt->bindParam(':date_1st_pub',$id);
+// Execute the query
+  if($stmt->execute()){
+  echo json_encode(array('result'=>'success'));
+  }else{
+  echo json_encode(array('result'=>'fail'));
+  }
+
 }
 
 // Operazione DELETE
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
   // Codice per eliminare dati dal database
+  //get record id
+  //isset is a aphp function used to verify if a value is there or not
+  $deleteQuery= "DELETE FROM books WHERE id = ?";
+   //prepare query for execution
+   $stmt = $conn->prepare($deleteQuery);
+    //bind the parameters
+  $stmt->bindParam(1,$id);
+    // Execute the query
+  if($stmt->execute()){
+    //redirect user to read page and show msg record was deleted
+    echo json_encode(array('result'=>'success'));
+  }else{
+    echo json_encode(array('result'=>'fail'));
+  }
 }
 
 $method = $_SERVER['REQUEST_METHOD'];
@@ -87,4 +141,4 @@ if($_SERVER["RREQUEST_METHOD"] === "POST"){
     echo $sql ."<br>" . $e->getMessage();
   }*/
 
-?>
+/*?>*/

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { Book } from '../models/book';
+
 import { map } from 'rxjs/operators';
+import { Book } from 'src/app/models/book';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class BookService {
   public books: Book[] = [];
   private booksUpdated = new Subject<Book[]>();
   //endpoint api
- private apiUrl = 'http://localhost/FE-Angular-Library-FB/Backend-Api/api.php';
+ private apiUrl = 'http://localhost/FullstackPHP-Angular-LibraryFB/Backend_PHP/api.php';
 
 
   constructor(private http: HttpClient) { }
